@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Usercontext from './Context'
 
 
-export default function Nav() {
+export default function Nav ()
+{
+    const methods = useContext(Usercontext);
     return (
         <React.Fragment>
             <header>
@@ -32,7 +35,7 @@ export default function Nav() {
                                         </div>
                                         <div className="nott-list">
                                             <div className="notfication-details">
-                                                
+
                                                 <div className="notification-info">
                                                     <h3><a href="messages.html" title="">Jassica William</a> </h3>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
@@ -48,7 +51,7 @@ export default function Nav() {
                                                     <p>Lorem ipsum dolor sit amet.</p>
                                                     <span>2 min ago</span>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                             <div className="view-all-nots">
                                                 <a href="messages.html" title="">View All Messsages</a>
                                             </div>
@@ -112,7 +115,7 @@ export default function Nav() {
                         </div>
                         <div className="user-account">
                             <div className="user-info">
-                                <img src="images/user.png" alt="" style={{ width: "30px" }} />
+                                <img src={ `../images/${ methods.user.id }.png` } alt="" style={ { width: "30px" } } />
 
                             </div>
                             <div className="user-account-settingss" id="users">
