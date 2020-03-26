@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-import {
+import
+{
   BrowserRouter as Router,
   Route,
   NavLink
@@ -12,22 +13,15 @@ import Nav from "./components/nav";
 import Maincomponent from './components/main-component';
 
 
-import Usercontext from './components/user-context';
+import UserContext from './components/Context';
+import User from './components/User';
 
 
 
-const UserContextProvider = (props) => {
-  return (
-    <Usercontext.Provider value={props.value}>
-      {props.children}
-    </Usercontext.Provider>
-  )
-}
-
-
-function App() {
-  const [posts, addPost] = useState([]);
-  const [postListing, setPost] = useState({ postList: [] });
+function App ()
+{
+  const [ posts, setPosts ] = useState([]);
+  const [ user, setUser ] = useState({ id: '', name: '' })
 
   // const users = {
   //   1: "Pramod Gurav",
@@ -37,58 +31,51 @@ function App() {
   //   5: "Dhruv Dvivedi"
   // };
 
-  const UserContext = React.createContext();
 
 
 
-  useEffect(() => {
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => setPosts(data))
-
-  }, [])
-
-  function loadPost() {
+  function loadPost ()
+  {
 
     return (
 
       <main>
-        <Maincomponent allPosts={posts}></Maincomponent>
+        <Maincomponent allPosts={ posts }></Maincomponent>
       </main>
     )
   }
 
 
-  function onAddPost(postdata) {
-    console.log("in add post")
-    console.log(postdata);
-    let postedData = {
-      "id": +new Date,
-      "title": postdata.title,
-      "body": postdata.body
-    }
-    setPost({
-      posts: [postedData, ...postListing.postList] //speread operator copying todolist
-    })
 
+  function onFormSubmitUser (userData)
+  {
+    setUser(userData);
   }
 
+
+
   const methods = {
-    todoListDataFromApp: [],
-    onAddPost: onAddPost
+    onFormSubmitUser,
+    user
   }
 
   return (
-    <React.Fragment>
-      <UserContextProvider value={methods}>
-        <Router>
-          <div className="container"></div>
-          <Nav />
-          <Route exact path="/" render={loadPost} />
-        </Router>
-      </UserContextProvider>
-    </React.Fragment>
+
+    <UserContext.Provider value={ methods }>
+      {
+        user.id !== '' && user.id !== 0 ?
+          <React.Fragment>
+            <Nav />
+            <Router>
+              <div className="container"></div>
+              <Route exact path="/" render={ loadPost } />
+            </Router>
+          </React.Fragment>
+          :
+          <User />
+      }
+    </UserContext.Provider>
   );
 }
 
