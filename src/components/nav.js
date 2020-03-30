@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Usercontext from './Context'
 
+import Searchpost from './search-post'
 
 export default function Nav ()
 {
@@ -14,10 +15,7 @@ export default function Nav ()
                             <a href="index.html" title=""><img src="images/logo.png" alt="" /></a>
                         </div>
                         <div className="search-bar">
-                            <form>
-                                <input type="text" name="search" placeholder="Search..." />
-                                <button type="submit"><i className="la la-search"></i></button>
-                            </form>
+                           <Searchpost></Searchpost>
                         </div>
                         <nav>
                             <ul>
