@@ -6926,18 +6926,24 @@ nav{
     padding-bottom: 50px;
     box-shadow: 5px 5px #ccc;
 }
+
 .small-images{
 	float:left;
 	display:inline-flex;
+	width:33px;
 }
 .comment-display{
-	margin:10px;
+	margin:5px;
 	background-color: #f2f2f2;
 	border:1px solid #f2f2f2;
 	padding:10px;
+	border-radius: 5px;
 }
 .setmargin{
 	margin-bottom: 10px;
 	cursor:pointer;
+}
+header{
+	margin-bottom:50px;
 }
 /* new style end */
