@@ -4,11 +4,11 @@ export default function User() {
 
     const userObjectNew = [
         { id: 0, username: "Select User" },
-        { id: 1, username: "Sandip Hirwale" },
+        { id: 1, username: "Pramod Gurav" }
         { id: 2, username: "Shivraj Sawant " },
         { id: 3, username: "Anushree Nair" },
         { id: 4, username: "Dhruv Dvivedi" },
-        { id: 5, username: "Pramod Gurav" }
+       { id: 5, username: "Sandip Hirwale" },
 
     ];
 
